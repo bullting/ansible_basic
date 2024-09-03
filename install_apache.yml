@@ -10,32 +10,16 @@
 
   - name: install apache2 package
     ansible.builtin.apt:
-      name: apache2
+      name:
+        - apache2
+        - libapache2-mod-php
       state: latest
     when: ansible_distribution == "Ubuntu"
 
-  - name: install php
-    ansible.bulting.apt:
-      name: libapache2-mod-php
-      state: latest
-    when: ansible_distribution == "Ubuntu"
-
-
-  - name: update repository index for Fedora
+  - name: install httpd package
     ansible.builtin.dnf:
-      update_cache: yes
-    when ansible_distribution == "Fedora"
-
-   - name: install httpd package
-    ansible.builtin.apt:
-      name: httpd
+      name:
+        - httpd
+        - php
       state: latest
     when: ansible_distribution == "Fedora"
-
-  - name: install php
-    ansible.bulting.apt:
-      name: php
-      state: latest
-    when: ansible_distribution == "Fedora"
-
-
