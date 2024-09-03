@@ -3,23 +3,9 @@
   become: true
   tasks:
 
-  - name: udate repository index
-    ansible.builtin.apt:
-      update_cache: yes
-    when: ansible_distribution == "Ubuntu"
-
   - name: install apache2 package
-    ansible.builtin.apt:
+    ansible.builtin.package:
       name:
-        - apache2
-        - libapache2-mod-php
+        - "{{ php_package }}"
       state: latest
-    when: ansible_distribution == "Ubuntu"
-
-  - name: install httpd package
-    ansible.builtin.dnf:
-      name:
-        - httpd
-        - php
-      state: latest
-    when: ansible_distribution == "Fedora"
+      update_cache: yes
