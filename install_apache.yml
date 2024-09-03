@@ -6,6 +6,7 @@
   - name: install apache2 package
     ansible.builtin.package:
       name:
+        - "{{ apache_package }}"
         - "{{ php_package }}"
       state: latest
       update_cache: yes

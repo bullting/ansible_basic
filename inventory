@@ -1,2 +1,4 @@
-44.204.179.99
+44.204.179.99 apache_package=apache2 php_package=libapache2-mod-php
+# 10.10.10.1 apache_package=httpd php_package=php
+
 
